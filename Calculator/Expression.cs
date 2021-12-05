@@ -11,8 +11,7 @@ namespace Calculator
 
         public Expression(string input)
         {
-            Input = input;
-            CleanSpaces();
+            this.Input = Regex.Replace(input, @"\s", "");
         }
 
         public bool IsValid()
@@ -26,7 +25,7 @@ namespace Calculator
                 throw new FormatException("The input value is invalid.");
             }
 
-            List<string> numsAndOps = Split();
+            List<string> numsAndOps = GetExpressionElements();
 
             double result = Convert.ToDouble(numsAndOps[0]);
 
@@ -44,11 +43,8 @@ namespace Calculator
             return result;
         }
 
-        private List<string> Split()
+        private List<string> GetExpressionElements()
             => Regex.Split(Input, @"(\d+)([\*+-/])").Where(s => s != string.Empty).ToList();
-
-        private void CleanSpaces()
-            => this.Input = Regex.Replace(this.Input, @"\s", "");
 
         private int IndexOfTopPriorityOperation(List<string> input)
         {
