@@ -9,7 +9,7 @@ namespace Calculator.Tests
         [DataRow("12.1+8")]
         [DataRow(@"10\2")]
         [DataRow("10+2=")]
-        [DataRow("^10+2=")]
+        [DataRow("^10+2")]
         public void testNotAllowedCharactersInExpression(string mathExpression)
         {
             var expression = new Expression(mathExpression);
