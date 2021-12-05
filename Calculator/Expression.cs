@@ -16,10 +16,7 @@ namespace Calculator
         }
 
         public bool IsValid()
-        {
-            var a = Regex.IsMatch(this.Input, @"^(\d+[\*\+\-\/])+\d+$");
-            return a;
-        }
+            => Regex.IsMatch(this.Input, @"^(\d+[\*\+\-\/])+\d+$");
 
 
         public double GetResult()
@@ -29,33 +26,29 @@ namespace Calculator
                 throw new FormatException("The input value is invalid.");
             }
 
-            List<string> NumbersAndOperations = Split();
+            List<string> numsAndOps = Split();
 
-            double result = Convert.ToDouble(NumbersAndOperations[0]);
+            double result = Convert.ToDouble(numsAndOps[0]);
 
-            int index = IndexOfCurrentOperation(NumbersAndOperations);
+            int index = IndexOfCurrentOperation(numsAndOps);
 
             while (index > -1)
             {
-                result = CompleteBinaryOperation(Convert.ToDouble(NumbersAndOperations[index - 1]), Convert.ToDouble(NumbersAndOperations[index + 1]), NumbersAndOperations[index]);
-                NumbersAndOperations[index - 1] = result.ToString();
-                NumbersAndOperations.RemoveAt(index);
-                NumbersAndOperations.RemoveAt(index);
-                index = IndexOfCurrentOperation(NumbersAndOperations);
+                result = CompleteBinaryOperation(Convert.ToDouble(numsAndOps[index - 1]), Convert.ToDouble(numsAndOps[index + 1]), numsAndOps[index]);
+                numsAndOps[index - 1] = result.ToString();
+                numsAndOps.RemoveAt(index);
+                numsAndOps.RemoveAt(index);
+                index = IndexOfCurrentOperation(numsAndOps);
             }
 
             return result;
         }
 
         private List<string> Split()
-        {
-            return Regex.Split(Input, @"(\d+)([\*+-/])").Where(s => s != string.Empty).ToList();
-        }
+            => Regex.Split(Input, @"(\d+)([\*+-/])").Where(s => s != string.Empty).ToList();
 
         private void CleanSpaces()
-        {
-            this.Input = Regex.Replace(this.Input, @"\s", "");
-        }
+            => this.Input = Regex.Replace(this.Input, @"\s", "");
 
         private int IndexOfTopPriorityOperation(List<string> input)
         {
