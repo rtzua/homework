@@ -1,4 +1,4 @@
-The code was written under an assumption that algorithm should be implemented from scratch without using external "ready to use" solutions (e.g. DataTable.Compute(), make API calls to WolframAlpha, etc.) In different circumstances it would probably be better to use other approaches.
+The code is written under an assumption that algorithm should be implemented from scratch without using external "ready to use" solutions (e.g. DataTable.Compute(), make API calls to WolframAlpha, etc.) In different circumstances it would probably be better to use other approaches.
 
 
 # Input
@@ -10,7 +10,7 @@ Characters allowed:
 Input value should start with either integer, or white space.
 
 # Output
-Output value will be represented as a real number.
+Output value is represented as a real number.
 
 # Test plan
 * Write unit tests for main functionality. Tests should regularly run on CI pipeline (CI is not implemented at this stage).
