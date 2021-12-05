@@ -26,7 +26,7 @@ namespace Calculator
         {
             if (!IsValid())
             {
-                throw new FormatException("The value of an input is invalid.");
+                throw new FormatException("The input value is invalid.");
             }
 
             List<string> NumbersAndOperations = Split();
@@ -112,7 +112,7 @@ namespace Calculator
 
                 default:
                     {
-                        throw new InvalidOperationException(operation + " is not a valid operation.");
+                        throw new InvalidOperationException(operation + " is not a valid operator.");
                     }
             }
         }

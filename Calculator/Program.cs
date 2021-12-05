@@ -15,7 +15,7 @@ namespace Calculator
             }
         }
 
-        private static string CalculateResult(string input)
+        public static string CalculateResult(string input)
         {
             var expression = new Expression(input);
 
